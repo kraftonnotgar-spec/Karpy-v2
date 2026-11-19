@@ -1,0 +1,163 @@
+{
+  "common": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "notNow": "Not now",
+    "tryAgain": "Try again",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
+  },
+  "tabs": {
+    "home": "Home",
+    "notifications": "Activity",
+    "settings": "Settings"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign in",
+      "subtitle": "Use the email and password of your {app} account.",
+      "email": "Email",
+      "emailPlaceholder": "name@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "Your password",
+      "submit": "Sign in",
+      "tooMany": "Too many attempts. Try again in {minutes} min."
+    }
+  },
+  "verify": {
+    "title": "Check your messages",
+    "body": "This device is new to your account. We sent a 6-digit code to {channel} for {email}.",
+    "channelEmail": "your email",
+    "channelEmailPhone": "your email and phone",
+    "codeLabel": "Verification code",
+    "submit": "Verify",
+    "resend": "Send a new code",
+    "resendIn": "Send a new code in {seconds}s"
+  },
+  "validation": {
+    "emailMissing": "Enter your email address.",
+    "emailInvalid": "Enter a valid email address, such as name@example.com.",
+    "passwordMissing": "Enter your password.",
+    "code": "Enter the six-digit code from your email."
+  },
+  "pin": {
+    "createTitle": "Create your app PIN",
+    "createBody": "You will use it to open {app} on this device. It never leaves this device.",
+    "confirmTitle": "Confirm your PIN",
+    "confirmBody": "Enter the same {length} digits again.",
+    "weak": "That PIN is easy to guess. Choose another.",
+    "mismatch": "PINs did not match. Start again.",
+    "progress": "{filled} of {length} digits entered",
+    "delete": "Delete"
+  },
+  "biometrics": {
+    "faceId": "Face ID",
+    "touchId": "Touch ID",
+    "face": "Face unlock",
+    "fingerprint": "Fingerprint",
+    "generic": "Biometrics",
+    "title": "Unlock with {method}",
+    "body": "Open {app} faster. Your PIN still works anytime.",
+    "use": "Use {method}",
+    "enablePrompt": "Turn on {method} for {app}"
+  },
+  "notificationsIntro": {
+    "title": "Stay in the loop",
+    "body": "Get notified about activity and security alerts. You can change this anytime in Settings.",
+    "turnOn": "Turn on notifications"
+  },
+  "unlock": {
+    "title": "Enter your PIN",
+    "welcome": "Welcome back",
+    "welcomeName": "Welcome back, {name}",
+    "forgot": "Forgot PIN?",
+    "forgotTitle": "Forgot your PIN?",
+    "forgotBody": "Sign in again with your email and password, then create a new PIN.",
+    "signInAgain": "Sign in again",
+    "wrongPin": "Wrong PIN. {remaining} tries left.",
+    "wrongPinLast": "Wrong PIN. 1 try left before you are signed out.",
+    "lockedOutTitle": "Signed out for your security",
+    "lockedOutBody": "The PIN was entered wrong {attempts} times. Sign in with your password to set a new PIN.",
+    "biometricPrompt": "Unlock {app}",
+    "usePin": "Use PIN",
+    "withMethod": "Unlock with {method}"
+  },
+  "closed": {
+    "deactivatedTitle": "This account is deactivated",
+    "deactivatedBody": "This account is switched off for now, so you can't sign in or use it.",
+    "bannedTitle": "This account is closed",
+    "bannedBody": "You can no longer sign in to this account.",
+    "reason": "Message from the {app} team",
+    "contact": "If you think this is a mistake, contact support.",
+    "back": "Back to sign in"
+  },
+  "home": {
+    "greeting": {
+      "morning": "Good morning",
+      "afternoon": "Good afternoon",
+      "evening": "Good evening"
+    },
+    "greetingName": {
+      "morning": "Good morning, {name}",
+      "afternoon": "Good afternoon, {name}",
+      "evening": "Good evening, {name}"
+    },
+    "cardTitle": "You're signed in",
+    "cardBody": "This is the starter home screen. Replace it with your project's first feature."
+  },
+  "notifications": {
+    "title": "Activity",
+    "emptyTitle": "Nothing here yet",
+    "emptyBody": "Activity and notifications will show here."
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": "Appearance",
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "biometrics": "Unlock with {method}",
+    "lockNow": "Lock now",
+    "autoLock": "Locks after {seconds} s in the background",
+    "notifications": "Notifications",
+    "notificationsOn": "On",
+    "notificationsOff": "Off. Tap to turn on",
+    "signOut": "Sign out",
+    "signOutTitle": "Sign out?",
+    "signOutBody": "You will need your email and password to sign in again on this device.",
+    "version": "Version {version}"
+  },
+  "offline": {
+    "banner": "You're offline · Showing saved data",
+    "back": "Back online",
+    "lastUpdated": "Last updated {time}"
+  },
+  "push": {
+    "channelDefault": "General"
+  },
+  "crash": {
+    "title": "{app} closed unexpectedly",
+    "body": "Sorry about that. Send the technical details so the team can fix it.",
+    "send": "Send report",
+    "failed": "The report could not be sent. Check your connection and try again."
+  },
+  "errorScreen": {
+    "title": "Something went wrong",
+    "body": "This screen hit a problem. Your data is safe.",
+    "home": "Go to Home"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "offline": "You're offline. Check your mobile data or Wi-Fi and try again.",
+    "network": "No internet connection. Check your network and try again.",
+    "timeout": "The request took too long. Check your connection and try again.",
+    "rate_limited": "Too many attempts. Please wait a moment and try again.",
+    "session_expired": "Your session has ended. Please sign in again.",
+    "staff_not_allowed": "Staff accounts can't use the mobile app. Sign in on the web instead.",
+    "http_401": "Your session has ended. Please sign in again.",
+    "http_403": "Your account can't do this.",
+    "http_404": "We couldn't find that.",
+    "http_500": "Something went wrong on our side. Please try again.",
+    "http_503": "The service is busy. Please try again in a moment."
+  }
+}

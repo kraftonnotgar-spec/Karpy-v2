@@ -1,0 +1,7 @@
+{
+  "name": "app-crash",
+  "version": "1.0.0",
+  "description": "Local Expo module: keeps the last crash on the device so the user can choose to send it.",
+  "private": true,
+  "license": "UNLICENSED"
+}
