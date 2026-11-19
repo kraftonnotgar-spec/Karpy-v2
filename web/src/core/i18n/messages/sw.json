@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "titleTemplate": "%s · {app}",
+    "description": "{app}: {tagline}"
+  },
+  "brand": {
+    "tagline": "Mwanzo safi wa bidhaa yako inayofuata."
+  },
+  "common": {
+    "loading": "Inapakia…",
+    "loadingPage": "Ukurasa unapakia",
+    "tryAgain": "Jaribu tena",
+    "signIn": "Ingia",
+    "signOut": "Toka",
+    "signingOut": "Unatoka…",
+    "signedOut": "Umetoka",
+    "signOutFailed": "Imeshindikana kutoka. Tafadhali jaribu tena.",
+    "skipToContent": "Ruka hadi maudhui",
+    "toggleNavigation": "Fungua au funga menyu",
+    "backToMainMenu": "Rudi kwenye menyu kuu",
+    "supportReference": "Namba ya kumbukumbu: {id}",
+    "copyright": "© {year} {app}",
+    "breadcrumb": "Njia ya ukurasa"
+  },
+  "theme": {
+    "toLight": "Badili kwenda mwanga",
+    "toDark": "Badili kwenda giza"
+  },
+  "copy": {
+    "label": "Nakili",
+    "copied": "Imenakiliwa",
+    "failed": "Imeshindikana kunakili",
+    "copiedToast": "Imenakiliwa",
+    "failedToast": "Imeshindikana kunakili. Chagua maandishi na unakili mwenyewe."
+  },
+  "errors": {
+    "sessionExpired": {
+      "title": "Muda wa kuingia umeisha",
+      "description": "Ingia tena ili kuendelea."
+    },
+    "forbidden": {
+      "title": "Huna ruhusa ya kuona hiki",
+      "description": "Omba ruhusa kwa msimamizi, kisha jaribu tena."
+    },
+    "notFound": {
+      "title": "Haikupatikana",
+      "description": "Kumbukumbu hii haipatikani au si ya akaunti yako."
+    },
+    "conflict": {
+      "title": "Ombi hili linagongana na la awali",
+      "description": "Pakia ukurasa upya kuona hali ya sasa, kisha jaribu tena."
+    },
+    "tooMany": {
+      "title": "Maombi mengi mno",
+      "description": "Tafadhali subiri kabla ya kujaribu tena.",
+      "retryIn": "Jaribu tena baada ya sekunde {seconds}."
+    },
+    "timeout": {
+      "title": "Muda wa ombi umeisha",
+      "description": "Taarifa hazikupakia kwa wakati."
+    },
+    "unavailable": {
+      "title": "Huduma haipatikani",
+      "description": "Huduma haipatikani kwa sasa. Jaribu tena baadaye kidogo."
+    },
+    "invalid": {
+      "title": "Kagua taarifa ulizoweka",
+      "description": "Baadhi ya taarifa si sahihi. Zirekebishe kisha jaribu tena."
+    },
+    "generic": {
+      "title": "Kuna hitilafu",
+      "description": "Jaribu tena. Ikiendelea, wasiliana na msaada ukitaja namba ya kumbukumbu hapa chini."
+    }
+  },
+  "site": {
+    "eyebrow": "Karibu",
+    "headline": "Kila unachohitaji kuanza, mahali pamoja.",
+    "body": "Ingia kufungua dashibodi yako. Wasimamizi husimamia jukwaa kupitia dashibodi ya usimamizi.",
+    "ctaSignIn": "Ingia",
+    "ctaDashboard": "Fungua dashibodi",
+    "support": "Una swali? Tuandikie {email}."
+  },
+  "auth": {
+    "signIn": {
+      "title": "Ingia",
+      "description": "Tumia barua pepe na nenosiri lako kuendelea na {app}.",
+      "email": "Barua pepe",
+      "password": "Nenosiri",
+      "remember": "Nikumbuke kwenye kifaa hiki",
+      "submit": "Ingia",
+      "submitting": "Unaingia…",
+      "success": "Umeingia",
+      "backHome": "Rudi mwanzo"
+    },
+    "errors": {
+      "invalidCredentials": "Taarifa hizi hazilingani na kumbukumbu zetu.",
+      "emailNotVerified": "Thibitisha barua pepe yako kabla ya kuingia.",
+      "notAllowed": "Akaunti hii haiwezi kuingia. Wasiliana na msaada.",
+      "tooMany": "Majaribio mengi mno ya kuingia. Tafadhali jaribu baadaye.",
+      "codeRequired": "Tumetuma namba ya kuthibitisha kifaa hiki. Kuweka namba bado hakujajengwa kwenye mwanzo huu.",
+      "unavailable": "Kuingia hakupatikani kwa sasa. Jaribu tena baadaye kidogo.",
+      "invalidInput": "Weka barua pepe sahihi na nenosiri lako."
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "workspace": "Eneo la kazi",
+      "account": "Akaunti",
+      "overview": "Muhtasari",
+      "settings": "Mipangilio"
+    },
+    "overview": {
+      "title": "Muhtasari",
+      "description": "Eneo lako la kazi kwa haraka.",
+      "emptyTitle": "Bado hakuna kitu hapa",
+      "emptyDescription": "Vipengele vya bidhaa huongeza kadi na kurasa zake kwenye dashibodi hii."
+    }
+  },
+  "admin": {
+    "consoleName": "Usimamizi",
+    "nav": {
+      "workspace": "Eneo la kazi",
+      "people": "Watu",
+      "system": "Mfumo",
+      "overview": "Muhtasari",
+      "users": "Watumiaji",
+      "roles": "Majukumu na ruhusa",
+      "settings": "Mipangilio",
+      "plugins": "Programu-jalizi"
+    },
+    "overview": {
+      "title": "Muhtasari wa usimamizi",
+      "description": "Usimamizi wa jukwaa.",
+      "emptyTitle": "Bado hakuna moduli za usimamizi",
+      "emptyDescription": "Programu-jalizi na bidhaa huongeza kurasa zao kwenye menyu ya dashibodi hii."
+    },
+    "sections": {
+      "platform": "Jukwaa"
+    },
+    "menu": {
+      "pages": "Kurasa",
+      "media": "Picha na faili",
+      "plugins": "Programu-jalizi",
+      "users": "Watumiaji na majukumu",
+      "settings": "Mipangilio"
+    },
+    "workspace": "Eneo la kazi",
+    "backToWorkspace": "Rudi kwenye eneo la kazi",
+    "backTo": "Rudi kwenye {label}",
+    "restricted": "Eneo lenye ulinzi",
+    "menuUnavailable": "Menyu haikuweza kupakiwa.",
+    "badgeCount": "{count} zinahitaji kushughulikiwa",
+    "pageNotBuilt": {
+      "title": "{label}",
+      "description": "Ukurasa huu umesajiliwa na programu-jalizi lakini bado hauna skrini ya wavuti."
+    },
+    "range": {
+      "label": "Kipindi",
+      "days": "Siku {days}",
+      "fromTo": "{from} – {to}"
+    },
+    "widgets": {
+      "empty": "Bado hakuna data kwa kipindi hiki.",
+      "error": "Kipengele hiki hakikuweza kupakiwa.",
+      "retry": "Jaribu tena",
+      "vsPrevious": "ukilinganisha na kipindi kilichopita",
+      "noComparison": "Hakuna ulinganisho",
+      "open": "Fungua",
+      "none": "Bado hakuna vipengele",
+      "noneDescription": "Washa programu-jalizi zinazotoa vipengele vya Muhtasari navyo vitaonekana hapa."
+    },
+    "signIn": {
+      "title": "Kuingia kwa msimamizi",
+      "description": "Ingia kwenye dashibodi ya usimamizi ya {app}.",
+      "login": "Jina la mtumiaji au barua pepe",
+      "password": "Nenosiri",
+      "code": "Namba ya uthibitisho",
+      "codeHint": "Weka namba ya tarakimu 6 kutoka programu yako ya uthibitisho.",
+      "setupTitle": "Weka programu ya uthibitisho",
+      "setupDescription": "Changanua msimbo wa QR (au weka ufunguo) kwenye programu ya uthibitisho, kisha weka namba inayoonyesha.",
+      "setupKey": "Ufunguo wa kuweka",
+      "qrAlt": "Msimbo wa QR wa uthibitisho",
+      "recoveryTitle": "Hifadhi namba zako za dharura",
+      "recoveryDescription": "Kila namba inakuingiza mara moja ukipoteza programu ya uthibitisho. Zinaonyeshwa sasa tu.",
+      "continue": "Endelea kwenye dashibodi",
+      "submit": "Ingia",
+      "submitting": "Unaingia…",
+      "errors": {
+        "invalidCode": "Namba hiyo si sahihi. Tumia namba ya karibuni kutoka programu yako.",
+        "expired": "Muda wa kuingia umeisha. Ingia tena."
+      }
+    }
+  },
+  "hello_world": {
+    "section": "Hello World",
+    "menu": {
+      "inbox": "Sanduku la salamu",
+      "library": "Maktaba ya salamu",
+      "templates": "Violezo",
+      "languages": "Lugha"
+    },
+    "widgets": {
+      "greetings_total": "Salamu zilizotumwa",
+      "greetings_by_day": "Salamu kwa siku",
+      "greetings": "Salamu"
+    }
+  }
+}

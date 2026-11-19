@@ -1,0 +1,104 @@
+/*
+ * Default product theme: a calm neutral palette (slate surfaces, indigo primary).
+ * This file (and every src/products/<p>/theme.css) is the ONLY web source allowed to contain
+ * colour values. globals.css maps the semantic shadcn tokens (--background, --primary, ...)
+ * to the --app-* variables below. Scoped by <html data-product="..."> so several products can
+ * be bundled and NEXT_PUBLIC_PRODUCT picks the active one.
+ */
+:root[data-product="default"] {
+  /* Fonts: system stacks, nothing to download or license. */
+  --app-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --app-font-heading: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --app-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --app-radius: 0.625rem;
+
+  /* PWA manifest colours (read by src/app/manifest.ts; plain hex for every platform). */
+  --manifest-background: #f8fafc;
+  --manifest-theme: #4f46e5;
+
+  --app-page: oklch(0.984 0.003 247.858);
+  --app-background: oklch(1 0 0);
+  --app-foreground: oklch(0.208 0.042 265.755);
+  --app-card: oklch(1 0 0);
+  --app-card-foreground: oklch(0.208 0.042 265.755);
+  --app-popover: oklch(1 0 0);
+  --app-popover-foreground: oklch(0.208 0.042 265.755);
+  --app-primary: oklch(0.511 0.262 276.966);
+  --app-primary-foreground: oklch(0.984 0.003 247.858);
+  --app-secondary: oklch(0.968 0.007 247.896);
+  --app-secondary-foreground: oklch(0.208 0.042 265.755);
+  --app-muted: oklch(0.968 0.007 247.896);
+  --app-muted-foreground: oklch(0.554 0.046 257.417);
+  --app-accent: oklch(0.962 0.018 272.314);
+  --app-accent-foreground: oklch(0.359 0.144 278.697);
+  --app-destructive: oklch(0.577 0.245 27.325);
+  --app-border: oklch(0.929 0.013 255.508);
+  --app-input: oklch(0.929 0.013 255.508);
+  --app-ring: oklch(0.585 0.233 277.117);
+  --app-brand: oklch(0.511 0.262 276.966);
+  --app-brand-foreground: oklch(0.984 0.003 247.858);
+  --app-success: oklch(0.596 0.145 163.225);
+  --app-success-surface: oklch(0.979 0.021 166.113);
+  --app-warning: oklch(0.666 0.179 58.318);
+  --app-warning-surface: oklch(0.987 0.022 95.277);
+  --app-failure: oklch(0.577 0.245 27.325);
+  --app-failure-surface: oklch(0.971 0.013 17.38);
+  --app-info: oklch(0.554 0.046 257.417);
+  --app-chart-1: oklch(0.585 0.233 277.117);
+  --app-chart-2: oklch(0.685 0.169 237.323);
+  --app-chart-3: oklch(0.704 0.14 182.503);
+  --app-chart-4: oklch(0.769 0.188 70.08);
+  --app-chart-5: oklch(0.645 0.246 16.439);
+  --app-sidebar: oklch(1 0 0);
+  --app-sidebar-foreground: oklch(0.208 0.042 265.755);
+  --app-sidebar-primary: oklch(0.511 0.262 276.966);
+  --app-sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --app-sidebar-accent: oklch(0.968 0.007 247.896);
+  --app-sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --app-sidebar-border: oklch(0.929 0.013 255.508);
+  --app-sidebar-ring: oklch(0.585 0.233 277.117);
+}
+
+:root[data-product="default"].dark {
+  --app-page: oklch(0.129 0.042 264.695);
+  --app-background: oklch(0.17 0.042 265);
+  --app-foreground: oklch(0.984 0.003 247.858);
+  --app-card: oklch(0.208 0.042 265.755);
+  --app-card-foreground: oklch(0.984 0.003 247.858);
+  --app-popover: oklch(0.208 0.042 265.755);
+  --app-popover-foreground: oklch(0.984 0.003 247.858);
+  --app-primary: oklch(0.673 0.182 276.935);
+  --app-primary-foreground: oklch(0.129 0.042 264.695);
+  --app-secondary: oklch(0.279 0.041 260.031);
+  --app-secondary-foreground: oklch(0.984 0.003 247.858);
+  --app-muted: oklch(0.279 0.041 260.031);
+  --app-muted-foreground: oklch(0.704 0.04 256.788);
+  --app-accent: oklch(0.257 0.09 281.288);
+  --app-accent-foreground: oklch(0.93 0.034 272.788);
+  --app-destructive: oklch(0.704 0.191 22.216);
+  --app-border: oklch(1 0 0 / 10%);
+  --app-input: oklch(1 0 0 / 15%);
+  --app-ring: oklch(0.673 0.182 276.935);
+  --app-brand: oklch(0.673 0.182 276.935);
+  --app-brand-foreground: oklch(0.129 0.042 264.695);
+  --app-success: oklch(0.765 0.177 163.223);
+  --app-success-surface: oklch(0.262 0.051 172.552);
+  --app-warning: oklch(0.828 0.189 84.429);
+  --app-warning-surface: oklch(0.279 0.077 45.635);
+  --app-failure: oklch(0.704 0.191 22.216);
+  --app-failure-surface: oklch(0.258 0.092 26.042);
+  --app-info: oklch(0.704 0.04 256.788);
+  --app-chart-1: oklch(0.673 0.182 276.935);
+  --app-chart-2: oklch(0.746 0.16 232.661);
+  --app-chart-3: oklch(0.777 0.152 181.912);
+  --app-chart-4: oklch(0.828 0.189 84.429);
+  --app-chart-5: oklch(0.712 0.194 13.428);
+  --app-sidebar: oklch(0.208 0.042 265.755);
+  --app-sidebar-foreground: oklch(0.984 0.003 247.858);
+  --app-sidebar-primary: oklch(0.673 0.182 276.935);
+  --app-sidebar-primary-foreground: oklch(0.129 0.042 264.695);
+  --app-sidebar-accent: oklch(0.279 0.041 260.031);
+  --app-sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --app-sidebar-border: oklch(1 0 0 / 10%);
+  --app-sidebar-ring: oklch(0.673 0.182 276.935);
+}

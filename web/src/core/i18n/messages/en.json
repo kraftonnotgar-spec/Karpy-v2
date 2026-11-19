@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "titleTemplate": "%s · {app}",
+    "description": "{app}: {tagline}"
+  },
+  "brand": {
+    "tagline": "A clean starting point for your next product."
+  },
+  "common": {
+    "loading": "Loading…",
+    "loadingPage": "Loading page",
+    "tryAgain": "Try again",
+    "signIn": "Sign in",
+    "signOut": "Log out",
+    "signingOut": "Signing out…",
+    "signedOut": "Signed out",
+    "signOutFailed": "Unable to sign out. Please try again.",
+    "skipToContent": "Skip to content",
+    "toggleNavigation": "Toggle navigation",
+    "backToMainMenu": "Back to main menu",
+    "supportReference": "Support reference: {id}",
+    "copyright": "© {year} {app}",
+    "breadcrumb": "Breadcrumb"
+  },
+  "theme": {
+    "toLight": "Switch to light mode",
+    "toDark": "Switch to dark mode"
+  },
+  "copy": {
+    "label": "Copy",
+    "copied": "Copied",
+    "failed": "Copy failed",
+    "copiedToast": "Copied to clipboard",
+    "failedToast": "Unable to copy. Select the text and copy it manually."
+  },
+  "errors": {
+    "sessionExpired": {
+      "title": "Your session has expired",
+      "description": "Sign in again to continue."
+    },
+    "forbidden": {
+      "title": "You don't have access to this",
+      "description": "Ask an administrator for access, then try again."
+    },
+    "notFound": {
+      "title": "Not found",
+      "description": "This record is unavailable or does not belong to your account."
+    },
+    "conflict": {
+      "title": "This request conflicts with an earlier one",
+      "description": "Reload the page to see the current state, then try again."
+    },
+    "tooMany": {
+      "title": "Too many requests",
+      "description": "Please wait before trying again.",
+      "retryIn": "Try again in {seconds} seconds."
+    },
+    "timeout": {
+      "title": "The request timed out",
+      "description": "The information could not be loaded in time."
+    },
+    "unavailable": {
+      "title": "Service unavailable",
+      "description": "The service is temporarily unavailable. Try again shortly."
+    },
+    "invalid": {
+      "title": "Check your input",
+      "description": "Some values are not valid. Correct them and try again."
+    },
+    "generic": {
+      "title": "Something went wrong",
+      "description": "Try again. If it continues, contact support with the reference below."
+    }
+  },
+  "site": {
+    "eyebrow": "Welcome",
+    "headline": "Everything you need to start, in one place.",
+    "body": "Sign in to open your dashboard. Administrators manage the platform from the admin console.",
+    "ctaSignIn": "Sign in",
+    "ctaDashboard": "Open dashboard",
+    "support": "Questions? Write to {email}."
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign in",
+      "description": "Use your email and password to continue to {app}.",
+      "email": "Email",
+      "password": "Password",
+      "remember": "Keep me signed in on this device",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "success": "Signed in",
+      "backHome": "Back to home"
+    },
+    "errors": {
+      "invalidCredentials": "These credentials do not match our records.",
+      "emailNotVerified": "Verify your email before signing in.",
+      "notAllowed": "This account cannot sign in. Contact support.",
+      "tooMany": "Too many sign-in attempts. Please try again later.",
+      "codeRequired": "We sent a sign-in code to confirm this device. Code entry is not part of this starter yet.",
+      "unavailable": "Sign-in is unavailable right now. Try again shortly.",
+      "invalidInput": "Enter a valid email and your password."
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "workspace": "Workspace",
+      "account": "Account",
+      "overview": "Overview",
+      "settings": "Settings"
+    },
+    "overview": {
+      "title": "Overview",
+      "description": "Your workspace at a glance.",
+      "emptyTitle": "Nothing here yet",
+      "emptyDescription": "Product features add their cards and pages to this dashboard."
+    }
+  },
+  "admin": {
+    "consoleName": "Admin",
+    "nav": {
+      "workspace": "Workspace",
+      "people": "People",
+      "system": "System",
+      "overview": "Overview",
+      "users": "Users",
+      "roles": "Roles & permissions",
+      "settings": "Settings",
+      "plugins": "Plugins"
+    },
+    "overview": {
+      "title": "Admin overview",
+      "description": "Platform administration.",
+      "emptyTitle": "No admin modules yet",
+      "emptyDescription": "Plugins and products add their admin pages to this console's menu."
+    },
+    "sections": {
+      "platform": "Platform"
+    },
+    "menu": {
+      "pages": "Pages",
+      "media": "Media",
+      "plugins": "Plugins",
+      "users": "Users & roles",
+      "settings": "Settings"
+    },
+    "workspace": "Workspace",
+    "backToWorkspace": "Back to Workspace",
+    "backTo": "Back to {label}",
+    "restricted": "Restricted workspace",
+    "menuUnavailable": "The menu could not be loaded.",
+    "badgeCount": "{count} need attention",
+    "pageNotBuilt": {
+      "title": "{label}",
+      "description": "This page is registered by a plugin but has no web screen yet."
+    },
+    "range": {
+      "label": "Date range",
+      "days": "{days} days",
+      "fromTo": "{from} – {to}"
+    },
+    "widgets": {
+      "empty": "No data for this period yet.",
+      "error": "This widget could not be loaded.",
+      "retry": "Retry",
+      "vsPrevious": "vs previous period",
+      "noComparison": "No comparison",
+      "open": "Open",
+      "none": "No widgets yet",
+      "noneDescription": "Activate plugins that provide Overview widgets and they appear here."
+    },
+    "signIn": {
+      "title": "Admin sign-in",
+      "description": "Sign in to the {app} admin console.",
+      "login": "Username or email",
+      "password": "Password",
+      "code": "Authenticator code",
+      "codeHint": "Enter the 6-digit code from your authenticator app.",
+      "setupTitle": "Set up your authenticator",
+      "setupDescription": "Scan the QR code (or enter the setup key) in an authenticator app, then enter the code it shows.",
+      "setupKey": "Setup key",
+      "qrAlt": "Authenticator QR code",
+      "recoveryTitle": "Save your recovery codes",
+      "recoveryDescription": "Each code signs you in once if you lose your authenticator. They are shown only now.",
+      "continue": "Continue to the console",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "errors": {
+        "invalidCode": "That code is not valid. Try the latest code from your app.",
+        "expired": "This sign-in has expired. Sign in again."
+      }
+    }
+  },
+  "hello_world": {
+    "section": "Hello World",
+    "menu": {
+      "inbox": "Greetings inbox",
+      "library": "Greeting library",
+      "templates": "Templates",
+      "languages": "Languages"
+    },
+    "widgets": {
+      "greetings_total": "Greetings sent",
+      "greetings_by_day": "Greetings per day",
+      "greetings": "Greetings"
+    }
+  }
+}

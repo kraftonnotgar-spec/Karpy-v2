@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Product themes: one line per product. The active one is chosen by <html data-product>. */
+@import "../products/default/theme.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--app-font-sans);
+  --font-heading: var(--app-font-heading);
+  --font-mono: var(--app-font-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-page: var(--page);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-success: var(--success);
+  --color-success-surface: var(--success-surface);
+  --color-warning: var(--warning);
+  --color-warning-surface: var(--warning-surface);
+  --color-failure: var(--failure);
+  --color-failure-surface: var(--failure-surface);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Semantic tokens used by shadcn components, mapped to the active product's theme.css. */
+:root {
+  --radius: var(--app-radius);
+  --page: var(--app-page);
+  --background: var(--app-background);
+  --foreground: var(--app-foreground);
+  --card: var(--app-card);
+  --card-foreground: var(--app-card-foreground);
+  --popover: var(--app-popover);
+  --popover-foreground: var(--app-popover-foreground);
+  --primary: var(--app-primary);
+  --primary-foreground: var(--app-primary-foreground);
+  --secondary: var(--app-secondary);
+  --secondary-foreground: var(--app-secondary-foreground);
+  --muted: var(--app-muted);
+  --muted-foreground: var(--app-muted-foreground);
+  --accent: var(--app-accent);
+  --accent-foreground: var(--app-accent-foreground);
+  --destructive: var(--app-destructive);
+  --border: var(--app-border);
+  --input: var(--app-input);
+  --ring: var(--app-ring);
+  --brand: var(--app-brand);
+  --brand-foreground: var(--app-brand-foreground);
+  --success: var(--app-success);
+  --success-surface: var(--app-success-surface);
+  --warning: var(--app-warning);
+  --warning-surface: var(--app-warning-surface);
+  --failure: var(--app-failure);
+  --failure-surface: var(--app-failure-surface);
+  --info: var(--app-info);
+  --chart-1: var(--app-chart-1);
+  --chart-2: var(--app-chart-2);
+  --chart-3: var(--app-chart-3);
+  --chart-4: var(--app-chart-4);
+  --chart-5: var(--app-chart-5);
+  --sidebar: var(--app-sidebar);
+  --sidebar-foreground: var(--app-sidebar-foreground);
+  --sidebar-primary: var(--app-sidebar-primary);
+  --sidebar-primary-foreground: var(--app-sidebar-primary-foreground);
+  --sidebar-accent: var(--app-sidebar-accent);
+  --sidebar-accent-foreground: var(--app-sidebar-accent-foreground);
+  --sidebar-border: var(--app-sidebar-border);
+  --sidebar-ring: var(--app-sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+  }
+  body {
+    background: var(--page);
+    @apply text-foreground;
+    -webkit-font-smoothing: antialiased;
+  }
+  /*
+   * Control sizing (kept from the source dashboard the shadcn components were tuned with).
+   * Desktop with a fine pointer uses compact 36px controls; touch devices and narrow
+   * viewports keep the 44x44px minimum target.
+   */
+  button,
+  a[data-slot="button"],
+  [role="button"],
+  [role="menuitem"],
+  [role="menuitemradio"],
+  [role="option"],
+  input:not([type="checkbox"]):not([type="radio"]),
+  select {
+    min-height: 36px !important;
+    min-width: 36px !important;
+  }
+  @media (pointer: coarse), (max-width: 1023px) {
+    button,
+    a[data-slot="button"],
+    [role="button"],
+    [role="menuitem"],
+    [role="menuitemradio"],
+    [role="option"],
+    input:not([type="checkbox"]):not([type="radio"]),
+    select {
+      min-height: 44px !important;
+      min-width: 44px !important;
+    }
+  }
+  [data-slot="checkbox"],
+  [data-slot="switch"],
+  [data-slot="radio-group-item"] {
+    min-height: 0 !important;
+    min-width: 0 !important;
+  }
+  /* Keep the edge rail from covering collapsed menu buttons. */
+  [data-sidebar="rail"] { min-width: 0 !important; }
+}
+
+@media (max-width: 767px) {
+  /* 16px inputs prevent iOS focus zoom. */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+/* Workspace surfaces: the page colour behind sidebar insets and headers. */
+.workspace-surface {
+  background: var(--page);
+}
+
+/* Active sidebar item: a slim brand bar instead of a filled row. */
+[data-sidebar="menu-button"][data-active="true"] {
+  position: relative;
+  background: transparent;
+  box-shadow: none;
+}
+[data-sidebar="menu-button"][data-active="true"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--brand);
+}
+[data-slot="card"],
+.ring-foreground\/10 {
+  --tw-ring-color: var(--border);
+}
+
+/* Fast loads finish before the placeholder becomes visible. */
+[data-workspace-loading] {
+  animation: workspace-loading-reveal 100ms ease-out 180ms both;
+}
+@keyframes workspace-loading-reveal {
+  from { opacity: 0; visibility: hidden; }
+  to { opacity: 1; visibility: visible; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-workspace-loading] { animation-duration: 1ms; }
+}
+
+/* Toasts (class names set in components/ui/sonner.tsx). */
+.toaster [data-sonner-toast].app-toast {
+  background: var(--popover);
+  color: var(--popover-foreground);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  gap: 8px;
+  width: max-content;
+  max-width: 100%;
+  right: 0;
+  left: auto;
+  box-shadow: 0 4px 16px color-mix(in oklab, var(--foreground) 8%, transparent), 0 1px 3px color-mix(in oklab, var(--foreground) 5%, transparent);
+  font-family: var(--font-sans);
+  overflow-wrap: anywhere;
+}
+.toaster .app-toast-title { font-size: 13px; font-weight: 400; line-height: 20px; }
+.toaster .app-toast-description { color: var(--muted-foreground); }
+.toaster [data-icon] { width: 20px; height: 20px; flex-shrink: 0; margin: 0; }
+.app-toast-icon { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; color: var(--background); }
+.app-toast-icon svg { width: 14px; height: 14px; stroke-width: 2.5; }
+.app-toast-success { background: var(--success); }
+.app-toast-error { background: var(--failure); }
+.app-toast-warning { background: var(--warning); }
+.app-toast-info { background: var(--info); }
+@media (prefers-reduced-motion: reduce) {
+  .toaster [data-sonner-toast] { transition: none !important; animation: none !important; }
+}
+
+/* Combobox popover (class set in components/ui/combobox.tsx). */
+.app-combobox {
+  font-size: 13px;
+  letter-spacing: 0;
+}
+.app-combobox [cmdk-item] { font-size: 13px; font-weight: 400; }
+.app-combobox [cmdk-input] { min-height: 0 !important; }
+
+/* Nested sidebar menus slide in and out (core/components/sidebar-menu-slider.tsx). */
+.sidebar-menu-slider[data-moving="true"] > [data-menu-state] {
+  animation-duration: 240ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+  will-change: transform, opacity;
+}
+.sidebar-menu-slider[data-moving="true"][data-direction="forward"] > [data-menu-state="current"] { animation-name: sidebar-enter-right; }
+.sidebar-menu-slider[data-moving="true"][data-direction="forward"] > [data-menu-state="outgoing"] { animation-name: sidebar-exit-left; }
+.sidebar-menu-slider[data-moving="true"][data-direction="back"] > [data-menu-state="current"] { animation-name: sidebar-enter-left; }
+.sidebar-menu-slider[data-moving="true"][data-direction="back"] > [data-menu-state="outgoing"] { animation-name: sidebar-exit-right; }
+@keyframes sidebar-enter-right { from { transform: translateX(100%); opacity: 0.4; } to { transform: translateX(0); opacity: 1; } }
+@keyframes sidebar-exit-left { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
+@keyframes sidebar-enter-left { from { transform: translateX(-100%); opacity: 0.4; } to { transform: translateX(0); opacity: 1; } }
+@keyframes sidebar-exit-right { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-menu-slider[data-moving="true"] > [data-menu-state] { animation: none; }
+}

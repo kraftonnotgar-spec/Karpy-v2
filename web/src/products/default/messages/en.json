@@ -1,0 +1,10 @@
+{
+  "site": {
+    "eyebrow": "Starter platform"
+  },
+  "product": {
+    "nav": {
+      "help": "Help"
+    }
+  }
+}
