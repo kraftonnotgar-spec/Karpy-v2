@@ -1,0 +1,1 @@
+"""KARPy Speed plugin."""

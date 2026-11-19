@@ -1,0 +1,80 @@
+{
+  "id": "krafton/contact",
+  "folder": "contact",
+  "name": "Contact",
+  "namespace": "karpy_platform.plugins.contact",
+  "provider": "karpy_platform.plugins.contact.provider",
+  "version": "1.0.0",
+  "author": "Krafton",
+  "description": "Contact forms, custom fields, submissions, and shortcode rendering for KARPy CMS",
+  "url": "",
+  "icon": "mail",
+  "required_plugins": [],
+  "minimum_core_version": "0.1.0",
+  "ready": true,
+  "settings": {
+    "id": "plugin.contact",
+    "group": "settings.others",
+    "title": "Contact",
+    "description": "Contact submissions, custom fields, and shortcode settings.",
+    "icon": "mail",
+    "route": "/admin/contacts",
+    "priority": 500,
+    "fields": []
+  },
+  "emailTemplates": {
+    "type": "plugins",
+    "module": "contact",
+    "name": "Contact",
+    "description": "Contact form notification and reply email templates.",
+    "templates": {
+      "notice": {
+        "title": "Send notice to administrator",
+        "description": "Email template for notifying administrator upon receiving a new contact submission",
+        "subject": "New contact message from {{ contact_name }}",
+        "can_off": true,
+        "enabled_by_default": true,
+        "variables": {
+          "contact_name": "Contact name",
+          "contact_subject": "Contact subject",
+          "contact_email": "Contact email",
+          "contact_phone": "Contact phone",
+          "contact_address": "Contact address",
+          "contact_content": "Contact content",
+          "contact_custom_fields": "Contact custom fields"
+        },
+        "body": "{{ header }}\n<div class=\"bb-main-content\"><table class=\"bb-box\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"bb-content\"><h2>New contact message</h2><p><strong>Name:</strong> {{ contact_name }}</p><p><strong>Email:</strong> {{ contact_email }}</p><p><strong>Phone:</strong> {{ contact_phone }}</p><p><strong>Subject:</strong> {{ contact_subject }}</p><p>{{ contact_content }}</p><p>{{ contact_custom_fields }}</p></td></tr></table></div>\n{{ footer }}"
+      },
+      "sender-confirmation": {
+        "title": "Send confirmation to sender",
+        "description": "Email template for confirming the sender that the message has been sent successfully",
+        "subject": "We received your message",
+        "can_off": true,
+        "enabled_by_default": false,
+        "variables": {
+          "contact_name": "Contact name",
+          "contact_subject": "Contact subject",
+          "contact_email": "Contact email",
+          "contact_content": "Contact content"
+        },
+        "body": "{{ header }}\n<div class=\"bb-main-content\"><table class=\"bb-box\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"bb-content\"><h2>Thank you, {{ contact_name }}</h2><p>We received your message and will respond soon.</p><p>{{ contact_content }}</p></td></tr></table></div>\n{{ footer }}"
+      },
+      "admin-reply": {
+        "title": "Admin reply to contact",
+        "description": "Email template for admin replies to contact messages",
+        "subject": "Re: {{ contact_subject }}",
+        "can_off": true,
+        "enabled_by_default": true,
+        "variables": {
+          "contact_name": "Contact name",
+          "contact_subject": "Contact subject",
+          "contact_email": "Contact email",
+          "contact_content": "Contact content",
+          "admin_reply_message": "Admin reply message",
+          "site_title": "Site title"
+        },
+        "body": "{{ header }}\n<div class=\"bb-main-content\">\n  <table class=\"bb-box\" cellpadding=\"0\" cellspacing=\"0\">\n    <tr>\n      <td class=\"bb-content bb-pb-0\" align=\"center\">\n        <h1 class=\"bb-text-center bb-m-0 bb-mt-md\">Reply to your contact message</h1>\n      </td>\n    </tr>\n    <tr>\n      <td class=\"bb-content\">\n        <p>Dear {{ contact_name }},</p>\n        <p>Thank you for contacting us. We reviewed your message and here is our response:</p>\n        <div class=\"bb-content-block\">\n          <h4>Your original message:</h4>\n          <table class=\"bb-table\" cellspacing=\"0\" cellpadding=\"0\">\n            <tr><td>Subject:</td><td class=\"bb-font-strong bb-text-left\">{{ contact_subject }}</td></tr>\n            <tr><td colspan=\"2\">Message:</td></tr>\n            <tr><td colspan=\"2\" class=\"bb-font-strong\"><i>{{ contact_content }}</i></td></tr>\n          </table>\n        </div>\n        <div class=\"bb-content-block bb-mt-lg\">\n          <h4>Our response:</h4>\n          <div class=\"bb-reply-content\">{{ admin_reply_message }}</div>\n        </div>\n        <p>If you have any additional questions, please reply to this email or contact us again.</p>\n        <p>Best regards,<br>{{ site_title }} Team</p>\n      </td>\n    </tr>\n  </table>\n</div>\n{{ footer }}"
+      }
+    }
+  }
+}

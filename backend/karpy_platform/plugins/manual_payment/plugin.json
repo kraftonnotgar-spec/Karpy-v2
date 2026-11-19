@@ -1,0 +1,14 @@
+{
+  "id": "krafton/manual-payment",
+  "folder": "manual_payment",
+  "name": "Manual Payment",
+  "namespace": "karpy_platform.plugins.manual_payment",
+  "provider": "karpy_platform.plugins.manual_payment.provider",
+  "version": "1.0.0",
+  "author": "Krafton",
+  "description": "Configurable bank transfer, Binance Pay, wallet, or offline payment instructions.",
+  "icon": "wallet-cards",
+  "required_plugins": ["payment"],
+  "minimum_core_version": "0.1.0",
+  "ready": true
+}

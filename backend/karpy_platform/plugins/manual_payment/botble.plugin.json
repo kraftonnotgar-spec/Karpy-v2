@@ -1,0 +1,6 @@
+{
+  "name": "Manual Payment",
+  "namespace": "karpy_platform.plugins.manual_payment",
+  "provider": "karpy_platform.plugins.manual_payment.provider.ManualPaymentPlugin",
+  "version": "1.0.0"
+}

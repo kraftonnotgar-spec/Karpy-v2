@@ -1,0 +1,6 @@
+{
+  "name": "FAQs",
+  "namespace": "karpy_platform.plugins.faq",
+  "provider": "karpy_platform.plugins.faq.provider",
+  "version": "1.0.0"
+}

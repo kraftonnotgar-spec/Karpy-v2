@@ -1,0 +1,10 @@
+[project]
+name = "karpy-plugin-payment"
+version = "1.0.0"
+description = "Payment transactions, logs, and gateway method registry for KARPy CMS"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.karpy.plugin]
+id = "payment"
+provider = "karpy_platform.plugins.payment.provider"

@@ -1,0 +1,6 @@
+{
+  "name": "Payment",
+  "namespace": "karpy_platform.plugins.payment",
+  "provider": "karpy_platform.plugins.payment.provider.PaymentPlugin",
+  "version": "1.0.0"
+}

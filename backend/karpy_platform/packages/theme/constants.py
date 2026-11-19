@@ -1,0 +1,23 @@
+THEME_MODULE_SCREEN_NAME = "theme"
+THEME_OPTIONS_MODULE_SCREEN_NAME = "theme-options"
+
+THEME_FRONT_HEADER = "theme-front-header"
+THEME_FRONT_BODY = "theme-front-body"
+THEME_FRONT_FOOTER = "theme-front-footer"
+
+THEME_ACTION_ACTIVATED = "packages.theme.activated"
+THEME_ACTION_REMOVED = "packages.theme.removed"
+THEME_ACTION_RENDERING_HOME = "packages.theme.rendering_home"
+THEME_ACTION_RENDERING_SINGLE = "packages.theme.rendering_single"
+THEME_ACTION_OPTIONS_RENDERING = "rendering-theme-options-page"
+THEME_ACTION_OPTIONS_UPDATED = "packages.theme.options_updated"
+
+THEME_FILTER_LIST = "packages.theme.list"
+THEME_FILTER_OPTIONS = "packages.theme.options"
+THEME_FILTER_TEMPLATE_CONTEXT = "packages.theme.template_context"
+THEME_FILTER_RENDERED_HTML = "packages.theme.rendered_html"
+THEME_FILTER_BODY_ATTRIBUTES = "theme_body_attributes"
+THEME_FILTER_HTML_ATTRIBUTES = "theme_html_attributes"
+THEME_FILTER_LOGO = "theme_logo"
+THEME_FILTER_FAVICON = "theme_favicon"
+THEME_FILTER_SITE_TITLE = "theme_site_title"

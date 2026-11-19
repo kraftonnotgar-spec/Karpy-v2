@@ -1,0 +1,10 @@
+[project]
+name = "karpy-plugin-speed"
+version = "1.0.0"
+description = "Speed optimization plugin for KARPy CMS."
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.karpy.plugin]
+id = "speed"
+provider = "karpy_platform.plugins.speed.provider"

@@ -1,0 +1,10 @@
+{
+  "id": "krafton/location",
+  "name": "Location",
+  "namespace": "karpy_platform.plugins.location",
+  "provider": "karpy_platform.plugins.location.provider",
+  "author": "Krafton",
+  "version": "1.0.0",
+  "description": "Manage location data: countries, states, and cities.",
+  "minimum_core_version": "1.0.0"
+}

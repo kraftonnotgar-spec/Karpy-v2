@@ -1,0 +1,10 @@
+<article class="page">
+    <header class="page-header">
+        <p class="eyebrow">{{ template or "Page" }}</p>
+        <h1>{{ page.name }}</h1>
+        {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+    </header>
+    <div class="page-content">
+        {{ (page.compiledContent or page.content or "") | safe }}
+    </div>
+</article>

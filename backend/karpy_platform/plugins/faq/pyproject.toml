@@ -1,0 +1,10 @@
+[project]
+name = "karpy-plugin-faq"
+version = "1.0.0"
+description = "FAQ manager with categories and shortcode blocks"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.karpy.plugin]
+id = "krafton/faq"
+provider = "karpy_platform.plugins.faq.provider"

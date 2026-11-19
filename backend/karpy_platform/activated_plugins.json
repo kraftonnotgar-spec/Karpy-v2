@@ -1,0 +1,13 @@
+{
+  "plugins": [
+    "hello_world",
+    "speed",
+    "payment",
+    "manual_payment",
+    "contact",
+    "social_login",
+    "location",
+    "faq",
+    "auth"
+  ]
+}

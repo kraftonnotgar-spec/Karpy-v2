@@ -1,0 +1,13 @@
+[project]
+name = "karpy-plugin-social-login"
+version = "1.0.0"
+description = "Secure Google authentication and extensible social account login for KARPy CMS."
+requires-python = ">=3.11"
+dependencies = [
+  "httpx>=0.28,<1",
+  "PyJWT[crypto]>=2.13,<3",
+]
+
+[tool.karpy.plugin]
+id = "social_login"
+provider = "karpy_platform.plugins.social_login.provider"

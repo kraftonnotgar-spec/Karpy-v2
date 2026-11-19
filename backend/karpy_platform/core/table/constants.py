@@ -1,0 +1,8 @@
+BASE_FILTER_TABLE_HEADINGS = "table_headings"
+BASE_FILTER_GET_LIST_DATA = "get_list_data"
+BASE_FILTER_GET_LIST_DATA_FOR_QUERY_TABLE = "get_list_data_for_query_table"
+BASE_FILTER_TABLE_BUTTONS = "base_filter_table_buttons"
+BASE_FILTER_TABLE_QUERY = "base_filter_table_query"
+BASE_FILTER_TABLE_BEFORE_RENDER = "base_filter_table_before_render"
+BASE_FILTER_TABLE_AFTER_RENDER = "base_filter_table_after_render"
+BASE_FILTER_TABLE_FOOTER_RENDER = "base_filter_table_footer_render"

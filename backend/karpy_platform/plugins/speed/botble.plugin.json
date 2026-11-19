@@ -1,0 +1,6 @@
+{
+  "name": "Speed",
+  "namespace": "karpy_platform.plugins.speed",
+  "provider": "karpy_platform.plugins.speed.provider.SpeedPlugin",
+  "version": "1.0.0"
+}

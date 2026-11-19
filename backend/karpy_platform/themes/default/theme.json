@@ -1,0 +1,16 @@
+{
+  "name": "KARPy Default",
+  "description": "Default KARPy public theme with Botble-style layouts, views, assets, and theme options.",
+  "version": "1.0.0",
+  "author": "KARPy",
+  "url": "https://github.com/kraftonnotgar-spec/KarPy",
+  "required_plugins": [],
+  "presets": {
+    "clean": {
+      "label": "Clean",
+      "options": {
+        "site_title": "KARPy"
+      }
+    }
+  }
+}

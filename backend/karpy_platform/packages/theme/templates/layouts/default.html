@@ -1,0 +1,35 @@
+<!doctype html>
+<html {{ html_attributes|safe }}>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ seo.title if seo and seo.title else site_title }}</title>
+    {% if seo and seo.description %}<meta name="description" content="{{ seo.description }}">{% endif %}
+    {% if favicon %}<link rel="icon" href="{{ favicon }}">{% endif %}
+    {{ styles|safe }}
+    {{ header_html|safe }}
+</head>
+<body {{ body_attributes|safe }}>
+    {{ body_html|safe }}
+    <header class="site-header">
+        <a class="brand" href="/site">{{ site_title }}</a>
+        <nav class="site-nav">
+            <a href="/site">Home</a>
+            <a href="/sitemap.xml">Sitemap</a>
+        </nav>
+    </header>
+    <main class="site-main">
+        {{ content|safe }}
+        {% if widgets.primary_sidebar %}
+            <aside class="site-widgets">
+                {{ widgets.primary_sidebar|safe }}
+            </aside>
+        {% endif %}
+    </main>
+    <footer class="site-footer">
+        <span>{{ copyright }}</span>
+    </footer>
+    {{ scripts|safe }}
+    {{ footer_html|safe }}
+</body>
+</html>

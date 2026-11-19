@@ -1,0 +1,56 @@
+# Secrets and local config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+google-services.json
+GoogleService-Info.plist
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Local data
+*.db
+*.sqlite
+*.sqlite3
+backend/media/
+backend/storage/
+backend/public/themes/
+
+# Node / web / mobile
+node_modules/
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+.expo/
+.expo-shared/
+mobile/android/
+mobile/ios/
+coverage/
+test-results/
+playwright-report/
+
+# Go
+services/**/bin/
+*.exe
+*.test
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log

@@ -1,0 +1,6 @@
+[project]
+name = "karpy-manual-payment"
+version = "1.0.0"
+description = "Standalone manual gateway for KARPy Payment"
+requires-python = ">=3.11"
+dependencies = []

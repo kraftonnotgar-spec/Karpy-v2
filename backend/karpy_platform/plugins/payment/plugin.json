@@ -1,0 +1,25 @@
+{
+  "id": "krafton/payment",
+  "folder": "payment",
+  "name": "Payment",
+  "namespace": "karpy_platform.plugins.payment",
+  "provider": "karpy_platform.plugins.payment.provider",
+  "version": "1.0.0",
+  "author": "Krafton",
+  "description": "Payment transactions, logs, and gateway method registry for KARPy CMS",
+  "icon": "credit-card",
+  "url": "",
+  "required_plugins": [],
+  "minimum_core_version": "0.1.0",
+  "ready": true,
+  "settings": {
+    "id": "plugin.payment",
+    "group": "settings.others",
+    "title": "Payment",
+    "description": "Payment gateways, transactions, and API logs.",
+    "icon": "credit-card",
+    "route": "/admin/payments/methods",
+    "priority": 500,
+    "fields": []
+  }
+}

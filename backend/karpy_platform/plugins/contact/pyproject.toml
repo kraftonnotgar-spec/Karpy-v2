@@ -1,0 +1,10 @@
+[project]
+name = "karpy-plugin-contact"
+version = "1.0.0"
+description = "Contact forms, custom fields, submissions, and shortcode rendering for KARPy CMS"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.karpy.plugin]
+id = "krafton/contact"
+provider = "karpy_platform.plugins.contact.provider"

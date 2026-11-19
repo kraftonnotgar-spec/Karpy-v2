@@ -1,0 +1,91 @@
+{
+  "id": "krafton/social-login",
+  "folder": "social_login",
+  "name": "Social Login",
+  "namespace": "karpy_platform.plugins.social_login",
+  "provider": "karpy_platform.plugins.social_login.provider",
+  "version": "1.0.0",
+  "author": "Krafton",
+  "description": "Secure Google authentication and extensible social account login for KARPy CMS.",
+  "url": "",
+  "icon": "share-2",
+  "required_plugins": [],
+  "minimum_core_version": "0.1.0",
+  "ready": true,
+  "settings": {
+    "id": "plugin.social_login",
+    "group": "settings.others",
+    "title": "Social Login",
+    "description": "Configure secure Google sign-in and social account registration.",
+    "icon": "share-2",
+    "route": "/admin/settings/social-login",
+    "priority": 100,
+    "permission": "social-login.settings",
+    "fields": [
+      {
+        "key": "social_login_enable",
+        "label": "Enable social login",
+        "type": "switch",
+        "default": false,
+        "description": "Show configured social providers on supported login screens."
+      },
+      {
+        "key": "social_login_google_enable",
+        "label": "Enable Google login",
+        "type": "switch",
+        "default": false,
+        "dependsOn": {"social_login_enable": true}
+      },
+      {
+        "key": "social_login_google_client_id",
+        "label": "Google App ID",
+        "type": "text",
+        "default": "",
+        "description": "OAuth 2.0 Web application client ID from Google Cloud Console.",
+        "rules": {
+          "required_if": {
+            "field": "social_login_google_enable",
+            "equals": true,
+            "message": "The social login google app id field is required when social login google enable is 1."
+          }
+        },
+        "dependsOn": {"social_login_google_enable": true}
+      },
+      {
+        "key": "social_login_google_client_secret",
+        "label": "Google App Secret",
+        "type": "password",
+        "default": "",
+        "secret": true,
+        "description": "OAuth client secret. Never expose this value in frontend code.",
+        "rules": {
+          "required_if": {
+            "field": "social_login_google_enable",
+            "equals": true,
+            "message": "The social login google app secret field is required when social login google enable is 1."
+          }
+        },
+        "dependsOn": {"social_login_google_enable": true}
+      },
+      {
+        "key": "social_login_google_allow_registration",
+        "label": "Allow new user registration",
+        "type": "switch",
+        "default": false,
+        "description": "When disabled, only an existing CMS user with the same verified email can sign in.",
+        "dependsOn": {"social_login_google_enable": true}
+      },
+      {
+        "key": "social_login_style",
+        "label": "Button style",
+        "type": "select",
+        "default": "basic",
+        "options": [
+          {"value": "default", "label": "Default"},
+          {"value": "basic", "label": "Basic"},
+          {"value": "minimal", "label": "Minimal"}
+        ]
+      }
+    ]
+  }
+}

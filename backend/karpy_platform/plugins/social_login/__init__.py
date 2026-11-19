@@ -1,0 +1,1 @@
+"""KARPy Social Login plugin."""

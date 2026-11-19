@@ -1,0 +1,25 @@
+{
+  "id": "krafton/speed",
+  "folder": "speed",
+  "name": "Speed",
+  "namespace": "karpy_platform.plugins.speed",
+  "provider": "karpy_platform.plugins.speed.provider",
+  "version": "1.0.0",
+  "author": "Krafton",
+  "description": "Speed optimization plugin for KARPy CMS.",
+  "url": "",
+  "icon": "rocket",
+  "required_plugins": [],
+  "minimum_core_version": "0.1.0",
+  "ready": true,
+  "settings": {
+    "id": "plugin.speed",
+    "group": "settings.others",
+    "title": "Speed",
+    "description": "Configure the Speed plugin.",
+    "icon": "plug",
+    "route": "/admin/settings/plugins/speed",
+    "priority": 500,
+    "fields": []
+  }
+}

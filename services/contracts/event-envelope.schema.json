@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karpy.local/contracts/event-envelope.schema.json",
+  "title": "Karpy event envelope v1",
+  "description": "Every message published to the Karpy RabbitMQ events exchange is one JSON object of this shape. The routing key equals `type`. Consumers must ignore unknown top-level fields only if they are added in a later envelope version; within v1 additional properties are rejected.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "version", "source", "occurred_at", "idempotency_key", "data"],
+  "properties": {
+    "id": {
+      "description": "Unique event id (UUID, v7 recommended so ids sort by time). Also sent as the AMQP message_id.",
+      "type": "string",
+      "format": "uuid"
+    },
+    "type": {
+      "description": "Event type and routing key: <domain>.<entity>.<event>, lowercase, past tense event, e.g. `content.post.published`.",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*\\.[a-z][a-z0-9_]*\\.[a-z][a-z0-9_]*$",
+      "maxLength": 128
+    },
+    "version": {
+      "description": "Schema version of `data` for this event type. Bump on breaking change; publish both versions during migration.",
+      "type": "integer",
+      "minimum": 1
+    },
+    "source": {
+      "description": "Logical name of the producing service, e.g. `karpy` or `example-service`.",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,62}$"
+    },
+    "occurred_at": {
+      "description": "When the fact happened (not when it was published), RFC 3339 UTC.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "correlation_id": {
+      "description": "Id shared by every request and event in one business flow (usually the originating X-Request-Id).",
+      "type": ["string", "null"],
+      "maxLength": 128
+    },
+    "causation_id": {
+      "description": "Id of the event or request that directly caused this event.",
+      "type": ["string", "null"],
+      "maxLength": 128
+    },
+    "idempotency_key": {
+      "description": "Stable key consumers dedupe on. Same fact published twice => same key. Defaults to `id` when the producer has no better natural key.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "traceparent": {
+      "description": "Optional W3C trace context of the producing span (also sent as an AMQP header).",
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{2}-[0-9a-f]{32}-[0-9a-f]{16}-[0-9a-f]{2}$"
+    },
+    "data": {
+      "description": "Event payload; its schema is owned by the event type and version. Never put secrets or full personal records here - prefer references.",
+      "type": "object"
+    }
+  },
+  "examples": [
+    {
+      "id": "01936d3e-7c4a-7b2e-9f10-2a4b6c8d0e1f",
+      "type": "example.echo.received",
+      "version": 1,
+      "source": "example-service",
+      "occurred_at": "2026-01-01T00:00:00Z",
+      "correlation_id": "req-7f3a",
+      "causation_id": "req-7f3a",
+      "idempotency_key": "01936d3e-7c4a-7b2e-9f10-2a4b6c8d0e1f",
+      "traceparent": "00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01",
+      "data": {"message": "hello"}
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "productId": "KARPY_CORE",
+  "source": "karpy",
+  "version": "0.1.0",
+  "minimumPythonVersion": "3.11.0",
+  "modules": [
+    "support",
+    "base",
+    "table",
+    "acl",
+    "dashboard",
+    "media",
+    "setting",
+    "js_validation",
+    "chart",
+    "icon"
+  ],
+  "packagesRoot": "karpy_platform/packages",
+  "pluginsRoot": "karpy_platform/plugins",
+  "themesRoot": "karpy_platform/themes"
+}

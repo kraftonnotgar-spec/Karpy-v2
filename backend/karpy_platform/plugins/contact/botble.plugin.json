@@ -1,0 +1,6 @@
+{
+  "name": "Contact",
+  "namespace": "karpy_platform.plugins.contact",
+  "provider": "karpy_platform.plugins.contact.provider.ContactPlugin",
+  "version": "1.0.0"
+}

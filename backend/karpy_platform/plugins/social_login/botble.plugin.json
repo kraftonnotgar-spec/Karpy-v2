@@ -1,0 +1,6 @@
+{
+  "name": "Social Login",
+  "namespace": "karpy_platform.plugins.social_login",
+  "provider": "karpy_platform.plugins.social_login.provider.SocialLoginPlugin",
+  "version": "1.0.0"
+}

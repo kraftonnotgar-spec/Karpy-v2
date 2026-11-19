@@ -1,0 +1,11 @@
+[project]
+name = "karpy-location"
+version = "1.0.0"
+description = "Location plugin for KARPy CMS"
+authors = [{ name = "Krafton" }]
+requires-python = ">=3.11"
+
+[tool.karpy.plugin]
+id = "krafton/location"
+provider = "karpy_platform.plugins.location.provider.LocationPlugin"
+

@@ -1,0 +1,13 @@
+{
+  "id": "hello_world",
+  "name": "Hello World",
+  "namespace": "plugins.hello_world",
+  "provider": "plugin",
+  "version": "1.0.0",
+  "author": "KARPy Team",
+  "description": "A sample plugin that demonstrates the KARPy plugin architecture.",
+  "url": "",
+  "icon": "smile",
+  "required_plugins": [],
+  "minimum_core_version": "0.1.0"
+}
