@@ -121,8 +121,7 @@ The root `docker-compose.yml` provides the shared infrastructure on default port
 | Redis | 6379 | KARPy cache/sessions, service nonce replay caches |
 | RabbitMQ | 5672 (AMQP), 15672 (management UI), 15692 (Prometheus) | events |
 
-Optional **`observability` profile** (definitions proposed in
-[`services/observability/compose.observability.yaml`](../services/observability/compose.observability.yaml)):
+Optional **`observability` profile** (defined in the root [`docker-compose.yml`](../docker-compose.yml)):
 
 | Service | Port | Config |
 | --- | --- | --- |

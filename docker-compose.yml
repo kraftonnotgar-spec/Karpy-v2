@@ -1,0 +1,65 @@
+# Local development services for Karpy. Not a production deployment.
+#   docker compose up -d                              # Postgres, Redis, RabbitMQ
+#   docker compose --profile observability up -d      # + OpenTelemetry collector, Jaeger, Prometheus
+# Ports bind to 127.0.0.1 only. Credentials are local-development values; set real ones in .env for anything else.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-karpy}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-karpy}
+      POSTGRES_DB: ${POSTGRES_DB:-karpy}
+    ports: ["127.0.0.1:5432:5432"]
+    volumes: [karpy-postgres:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-karpy}"]
+      interval: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports: ["127.0.0.1:6379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 10
+
+  rabbitmq:
+    # Events between the backend and services (docs/SERVICES.md). Management UI: http://127.0.0.1:15672
+    image: rabbitmq:3.13-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-karpy}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-karpy}
+    ports: ["127.0.0.1:5672:5672", "127.0.0.1:15672:15672", "127.0.0.1:15692:15692"]
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      retries: 10
+
+  # ---- optional observability profile (docs/INFRASTRUCTURE.md) ----
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.111.0
+    profiles: ["observability"]
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./services/observability/otel-collector.yaml:/etc/otelcol/config.yaml:ro
+    ports: ["127.0.0.1:4317:4317", "127.0.0.1:4318:4318"]
+    depends_on: [jaeger]
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.62.0
+    profiles: ["observability"]
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports: ["127.0.0.1:16686:16686"]
+
+  prometheus:
+    image: prom/prometheus:v2.55.0
+    profiles: ["observability"]
+    volumes:
+      - ./services/observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports: ["127.0.0.1:9090:9090"]
+    depends_on: [otel-collector]
+
+volumes:
+  karpy-postgres:

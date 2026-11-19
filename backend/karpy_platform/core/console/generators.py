@@ -304,6 +304,33 @@ class {class_name}:
             }}
         ]
 
+    @staticmethod
+    def get_admin_sections() -> list[dict]:
+        """Web admin sidebar section (docs/PLUGINS.md). Labels are i18n keys with English defaults."""
+        return [
+            {{
+                "id": "{Naming.kebab(slug)}",
+                "label": "{slug}.section",
+                "label_default": "{title}",
+                "icon": "rocket",
+                "priority": 120,
+                "items": [
+                    {{
+                        "id": "{Naming.kebab(slug)}.index",
+                        "label": "{slug}.menu.index",
+                        "label_default": "{title}",
+                        "route": "/admin/{Naming.kebab(slug)}",
+                        "permission": "{slug}.index",
+                    }}
+                ],
+            }}
+        ]
+
+    @staticmethod
+    def get_overview_widgets() -> list[dict]:
+        """Admin Overview tiles (docs/PLUGINS.md). Return [] for none."""
+        return []
+
 
 def _discover_modules(folder: str) -> list[str]:
     path = PLUGIN_PATH.joinpath(*folder.split("."))
