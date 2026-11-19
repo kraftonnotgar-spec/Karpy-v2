@@ -23,7 +23,7 @@ screens. Read [`mobile/AGENTS.md`](../mobile/AGENTS.md) before changing it (Expo
 
 ## Backend contract
 
-Base `${EXPO_PUBLIC_API_URL}/api/plugins/auth/mobile/v1` — full contract:
+Base `${EXPO_PUBLIC_API_BASE_URL}/api/plugins/auth/mobile/v1` — full contract:
 [`backend/karpy_platform/plugins/auth/MOBILE_AUTH.md`](../backend/karpy_platform/plugins/auth/MOBILE_AUTH.md).
 
 `POST /login` → tokens or `requiresOTP` · `POST /verify-login` → tokens + `device_token` ·
@@ -36,7 +36,7 @@ Other plugin APIs accept the same bearer token (`Authorization: Bearer <access t
 
 ```bash
 cd mobile
-cp .env.example .env            # EXPO_PUBLIC_API_URL=http://<your machine's LAN IP>:9000 for a phone
+cp .env.example .env            # EXPO_PUBLIC_API_BASE_URL=http://<your machine's LAN IP>:9000 for a phone
 npm install
 npx expo start                  # Expo Go / dev build
 npm run typecheck && npm run lint && npm test

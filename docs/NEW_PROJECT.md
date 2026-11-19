@@ -32,7 +32,7 @@ settings, seed data and ports. A core bug found in Acme is fixed in Karpy-v2 fir
 | Product manifest, navigation additions | `web/src/products/acme/product.ts`; set `NEXT_PUBLIC_PRODUCT=acme` |
 | Copy / translations | `web/src/products/acme/messages/<locale>.json` (overrides core catalogs) |
 | Logos and icons | `web/public/brand/acme/` |
-| Mobile name, bundle ids, colours | `mobile/app.json` (`expo.name`, `slug`, `ios.bundleIdentifier`, `android.package`), `mobile/src/theme/`, `mobile/.env` (`EXPO_PUBLIC_API_URL`) |
+| Mobile name, bundle ids, colours | `mobile/app.json` (`expo.name`, `slug`, `ios.bundleIdentifier`, `android.package`), `mobile/src/theme/`, `mobile/.env` (`EXPO_PUBLIC_API_BASE_URL`) |
 | Product features | product plugins: `backend/karpy_platform/plugins/acme_<feature>/` (or a separate plugins root), each with migrations, routes, `get_admin_sections()`, `get_overview_widgets()` |
 | Product rules for sign-in/sign-up | hooks from `plugins/auth/extensions.py` registered in your plugin's `boot()` |
 | Other-language services | copy `services/go-template` → `services/acme-<name>`, add its OpenAPI contract |
