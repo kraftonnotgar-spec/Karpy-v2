@@ -15,7 +15,7 @@ screens. Read [`mobile/AGENTS.md`](../mobile/AGENTS.md) before changing it (Expo
 | Secure storage, device id | `src/lib/storage.ts`, `src/lib/device-id.ts` (one random id per install, 32–128 chars) |
 | Theme | `src/theme/tokens.ts` (the only file with colours), `theme.tsx` (light/dark) |
 | Offline | `src/lib/offline/` (persisted query cache, rules), `components/offline-banner.tsx` |
-| Push | `src/lib/push.ts`, `push-rules.ts` — Expo push token sent to the backend after sign-in, removed on sign-out |
+| Push | `src/lib/push.ts`, `push-rules.ts` — device push token (native APNs/FCM by default, or Expo with `EXPO_PUBLIC_PUSH_PROVIDER=expo`) sent to the backend after sign-in/unlock, removed on sign-out |
 | Crash reporter | `modules/app-crash` (native module) + `src/lib/crash.ts`; upload endpoint configurable, off by default |
 | App integrity | `src/lib/security/integrity.ts` — optional hook point (Play Integrity / App Attest) matching the backend's `auth.mobile.integrity` hook |
 | Strings | `src/i18n/en.json` + `t()` |
