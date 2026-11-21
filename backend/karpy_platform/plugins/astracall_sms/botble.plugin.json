@@ -1,0 +1,6 @@
+{
+  "name": "Astracall Sms",
+  "namespace": "karpy_platform.plugins.astracall_sms",
+  "provider": "karpy_platform.plugins.astracall_sms.provider.AstracallSmsPlugin",
+  "version": "1.0.0"
+}

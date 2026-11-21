@@ -1,0 +1,25 @@
+{
+  "id": "krafton/astracall-sms",
+  "folder": "astracall_sms",
+  "name": "Astracall Sms",
+  "namespace": "karpy_platform.plugins.astracall_sms",
+  "provider": "karpy_platform.plugins.astracall_sms.provider",
+  "version": "1.0.0",
+  "author": "Krafton",
+  "description": "AstraCall SMS provider for payment notifications: adapts the SmsProvider port with an encrypted API key and sender ID.",
+  "icon": "message-circle",
+  "url": "",
+  "required_plugins": ["payment"],
+  "minimum_core_version": "0.1.0",
+  "ready": true,
+  "settings": {
+    "id": "plugin.astracall_sms",
+    "group": "settings.others",
+    "title": "SMS provider (AstraCall)",
+    "description": "API key, sender ID and base URL for the AstraCall SMS provider.",
+    "icon": "message-circle",
+    "route": "/admin/settings/sms",
+    "priority": 500,
+    "fields": []
+  }
+}

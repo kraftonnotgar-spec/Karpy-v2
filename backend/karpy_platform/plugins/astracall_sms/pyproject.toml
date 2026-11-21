@@ -1,0 +1,6 @@
+[project]
+name = "karpy-astracall-sms"
+version = "1.0.0"
+description = "AstraCall SMS provider for KARPy payment notifications"
+requires-python = ">=3.11"
+dependencies = ["httpx>=0.28"]

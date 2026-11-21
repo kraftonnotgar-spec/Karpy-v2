@@ -4,6 +4,7 @@
     "speed",
     "payment",
     "manual_payment",
+    "astracall_sms",
     "contact",
     "social_login",
     "location",

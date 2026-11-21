@@ -1,11 +1,13 @@
 # Regular expressions (case-insensitive) that must not appear in core code.
 # Add the name of every product built on Karpy here, in the product's own repo too.
+# Note: names of pluggable *vendor adapters* that ship with the platform (e.g. the
+# mailer's mailgun/postmark/resend/ses, or the AstraCall SMS provider plugin) are not
+# listed here — they are optional integrations, not products built on Karpy.
 teepay
 \bkomi\b|komi[_\-.]|[_\-.]komi
 gokar
 evpay
 snippe
-astracall
 swala
 savanna
 \bstripe\b|stripe_

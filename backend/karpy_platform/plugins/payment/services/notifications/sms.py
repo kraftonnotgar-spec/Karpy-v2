@@ -34,6 +34,7 @@ class SmsResult:
     status: str = "logged"
     sent: bool = False
     test: bool = True
+    provider_message_id: str | None = None
 
 
 class SmsProvider(abc.ABC):
@@ -52,6 +53,14 @@ class SmsProvider(abc.ABC):
 
     def is_configured(self, values: dict[str, Any]) -> bool:
         return all(values.get(key) for key in self.required_credentials)
+
+    def configure(self, values: dict[str, Any]) -> None:
+        """Prime the provider from the setting store before a send. Default: no-op.
+
+        ``resolve_sms_provider`` calls this with the current flat settings so a
+        provider can pull credentials (e.g. an encrypted API key) at dispatch time.
+        """
+        return None
 
 
 class LogSmsProvider(SmsProvider):
@@ -96,6 +105,7 @@ async def resolve_sms_provider(db: Any, values: dict[str, Any]) -> SmsProvider:
 
     supplied = await filter_value(SMS_PROVIDER_FILTER, None, db, values)
     if isinstance(supplied, SmsProvider):
+        supplied.configure(values)
         return supplied
 
     name = str(values.get("payment.notifications.sms.provider") or DEFAULT_SMS_PROVIDER).strip()
@@ -103,7 +113,9 @@ async def resolve_sms_provider(db: Any, values: dict[str, Any]) -> SmsProvider:
     if provider and provider.name != DEFAULT_SMS_PROVIDER and not provider.is_configured(values):
         logger.warning("SMS provider '%s' is missing credentials; using the log stub", name)
         provider = None
-    return provider or sms_provider_registry.get(DEFAULT_SMS_PROVIDER) or LogSmsProvider()
+    provider = provider or sms_provider_registry.get(DEFAULT_SMS_PROVIDER) or LogSmsProvider()
+    provider.configure(values)
+    return provider
 
 
 def sms_recipients(values: dict[str, Any]) -> list[str]:
