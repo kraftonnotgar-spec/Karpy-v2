@@ -111,6 +111,15 @@ async def create_payment(
         payment_metadata=metadata or {},
     )
     db.add(payment)
+    # Flush so the new record has an id before the "order created" notification is built;
+    # the in-app row is then committed atomically with the payment below.
+    await db.flush()
+    from karpy_platform.plugins.payment.services.notifications import (
+        EVENT_ORDER_CREATED,
+        dispatch_payment_event,
+    )
+
+    await dispatch_payment_event(db, EVENT_ORDER_CREATED, payment)
     await db.commit()
     await db.refresh(payment)
     return payment

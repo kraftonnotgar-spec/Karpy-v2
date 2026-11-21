@@ -17,6 +17,7 @@ from app.config import settings as app_settings
 from karpy_platform.core.acl.routes import current_admin_user
 from karpy_platform.core.setting.store import setting_store
 from karpy_platform.plugins.payment.models.payment import Payment, PaymentLog
+from karpy_platform.plugins.payment.models.notification import PaymentNotification
 from karpy_platform.plugins.payment.services.methods import payment_methods, method_settings
 from karpy_platform.plugins.payment.services.checkout import complete_payment
 from karpy_platform.plugins.payment.services.configuration import merge_secure_settings, public_settings
@@ -304,6 +305,87 @@ async def delete_log(log_id: str, db: AsyncSession = Depends(get_db)) -> dict[st
     log.is_deleted = True
     await db.commit()
     return {"message": "Payment log deleted."}
+
+
+def serialize_notification(notification: PaymentNotification) -> dict[str, Any]:
+    return {
+        "id": notification.id,
+        "event": notification.event,
+        "title": notification.title,
+        "body": notification.body,
+        "paymentId": notification.payment_id,
+        "reference": notification.reference,
+        "amount": float(notification.amount) if notification.amount is not None else None,
+        "currency": notification.currency,
+        "status": notification.status,
+        "customerLabel": notification.customer_label,
+        "data": notification.data or {},
+        "readAt": notification.read_at.isoformat() if notification.read_at else None,
+        "createdAt": notification.created_at.isoformat() if notification.created_at else None,
+    }
+
+
+async def _unread_notification_count(db: AsyncSession) -> int:
+    result = await db.execute(
+        select(func.count())
+        .select_from(PaymentNotification)
+        .where(PaymentNotification.is_deleted.is_(False), PaymentNotification.read_at.is_(None))
+    )
+    return int(result.scalar() or 0)
+
+
+@router.get("/notifications")
+async def list_notifications(
+    unread_only: bool = Query(False, alias="unreadOnly"),
+    page: int = Query(1, ge=1),
+    per_page: int = Query(15, ge=1, le=100, alias="perPage"),
+    db: AsyncSession = Depends(get_db),
+) -> dict[str, Any]:
+    filters = [PaymentNotification.is_deleted.is_(False)]
+    if unread_only:
+        filters.append(PaymentNotification.read_at.is_(None))
+    total = await _count(db, PaymentNotification, filters)
+    result = await db.execute(
+        select(PaymentNotification)
+        .where(*filters)
+        .order_by(PaymentNotification.created_at.desc())
+        .offset((page - 1) * per_page)
+        .limit(per_page)
+    )
+    return {
+        "data": [serialize_notification(item) for item in result.scalars().all()],
+        "meta": {"page": page, "perPage": per_page, "total": total},
+        "unread": await _unread_notification_count(db),
+    }
+
+
+@router.get("/notifications/unread-count")
+async def notifications_unread_count(db: AsyncSession = Depends(get_db)) -> dict[str, int]:
+    return {"unread": await _unread_notification_count(db)}
+
+
+@router.post("/notifications/read-all")
+async def mark_all_notifications_read(db: AsyncSession = Depends(get_db)) -> dict[str, Any]:
+    result = await db.execute(
+        select(PaymentNotification).where(
+            PaymentNotification.is_deleted.is_(False), PaymentNotification.read_at.is_(None)
+        )
+    )
+    for notification in result.scalars():
+        notification.mark_as_read()
+    await db.commit()
+    return {"message": "Notifications marked as read.", "unread": await _unread_notification_count(db)}
+
+
+@router.post("/notifications/{notification_id}/read")
+async def mark_notification_read(notification_id: str, db: AsyncSession = Depends(get_db)) -> dict[str, Any]:
+    notification = await db.get(PaymentNotification, notification_id)
+    if not notification or notification.is_deleted:
+        raise HTTPException(status_code=404, detail="Notification not found.")
+    notification.mark_as_read()
+    await db.commit()
+    await db.refresh(notification)
+    return {"notification": serialize_notification(notification), "unread": await _unread_notification_count(db)}
 
 
 @router.get("/methods", dependencies=[Depends(require_gateway_admin)])

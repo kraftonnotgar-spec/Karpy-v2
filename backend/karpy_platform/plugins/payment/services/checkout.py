@@ -210,6 +210,21 @@ async def complete_payment(
             "code": "capability_unavailable",
         }
     payment.payment_metadata = metadata
+    await _notify_transition(db, payment, next_status)
     await db.commit()
     await db.refresh(payment)
     return payment
+
+
+# Confirmed money and failures raise admin notifications; other transitions do not.
+_TRANSITION_EVENTS = {"completed": "received", "failed": "failed"}
+
+
+async def _notify_transition(db: AsyncSession, payment: Payment, next_status: str) -> None:
+    """Fan a settled/failed transition out to the notification channels (best-effort)."""
+    event = _TRANSITION_EVENTS.get(next_status)
+    if not event:
+        return
+    from karpy_platform.plugins.payment.services.notifications import dispatch_payment_event
+
+    await dispatch_payment_event(db, event, payment)
