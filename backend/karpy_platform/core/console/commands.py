@@ -49,7 +49,62 @@ def build_parser() -> argparse.ArgumentParser:
     crud_create.add_argument("--plugin", required=True, help="Target plugin folder, e.g. speed.")
     crud_create.add_argument("--force", action="store_true", help="Overwrite existing scaffold files.")
 
+    product_seed = subparsers.add_parser(
+        "product:seed",
+        help="Load the product's seed data (products/<PRODUCT>/seed). Idempotent; never overwrites.",
+    )
+    product_seed.add_argument("--product", help="Product folder under backend/products. Default: the PRODUCT env setting.")
+
+    demo_seed = subparsers.add_parser(
+        "demo:seed",
+        help="Load seed data, then the product's demo data. Refused when APP_ENV is production.",
+    )
+    demo_seed.add_argument("--product", help="Product folder under backend/products. Default: the PRODUCT env setting.")
+
+    demo_clear = subparsers.add_parser(
+        "demo:clear",
+        help="Remove demo accounts (and registered demo content) for the product.",
+    )
+    demo_clear.add_argument("--product", help="Product folder under backend/products. Default: the PRODUCT env setting.")
+
     return parser
+
+
+def run_product_command(command: str, product_arg: str | None, session_factory=None) -> int:
+    """Run product:seed / demo:seed / demo:clear and print a summary. Returns the exit code."""
+    import asyncio
+
+    from karpy_platform.core import products
+
+    try:
+        product = products.load_product(product_arg)
+        if command == "demo:seed":
+            products.ensure_demo_allowed()
+        if session_factory is None:
+            from app.database import async_session as session_factory
+        if command == "product:seed":
+            report = asyncio.run(products.run_product_seed(session_factory, product))
+            print(f"Seed data for {product.name!r} (seed_version {product.manifest.seed_version}): {report.total()} rows added")
+            print("\n".join(report.lines()) or "  nothing to load")
+        elif command == "demo:seed":
+            from app.config import settings
+
+            seeded, report = asyncio.run(products.run_demo_seed(session_factory, product, password=settings.DEMO_PASSWORD))
+            print(f"Seed data for {product.name!r}: {seeded.total()} rows added")
+            if seeded.skipped:
+                print("\n".join(line for line in seeded.lines() if "skipped" in line))
+            print(f"Demo data for {product.name!r}: {report.total()} rows added")
+            print("\n".join(report.lines()) or "  nothing to load")
+            if not settings.DEMO_PASSWORD:
+                print("Demo accounts have random passwords nobody knows; set DEMO_PASSWORD before demo:seed to sign in as them.")
+        else:
+            report = asyncio.run(products.run_demo_clear(session_factory, product))
+            print(f"Demo data removed for {product.name!r}: {report.total()} rows")
+            print("\n".join(report.lines()) or "  nothing to remove")
+    except products.ProductSeedError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    return 0
 
 
 def normalize_plugin_name(value: str) -> str:
@@ -90,6 +145,9 @@ def main(argv: list[str] | None = None) -> int:
             result = plugin_service.deactivate(normalize_plugin_name(args.name))
             print(result.get("message", result))
             return 1 if result.get("error") else 0
+
+        if args.command in ("product:seed", "demo:seed", "demo:clear"):
+            return run_product_command(args.command, args.product)
 
         if args.command == "crud:create":
             result = CrudGenerator().create(args.name, plugin=args.plugin, force=args.force)

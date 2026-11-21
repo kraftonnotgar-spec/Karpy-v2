@@ -70,7 +70,15 @@ class Settings(BaseSettings):
     MEDIA_DIR: Path = default_media_dir()
     THEME_PUBLIC_DIR: Path = default_theme_public_dir()
     STORAGE_DIR: Path = default_storage_dir()
-    
+
+    # Product layer (backend/products/<PRODUCT>/): seed data and optional demo data.
+    # No default on purpose: `product:seed` / `demo:seed` fail clearly until PRODUCT is set,
+    # so the neutral core never assumes a product. See docs/REUSE.md.
+    PRODUCT: str | None = None
+    PRODUCTS_DIR: Path = BASE_DIR / "products"
+    # Password for demo accounts created by `demo:seed`; unset means random (unusable) passwords.
+    DEMO_PASSWORD: str | None = Field(default=None, repr=False)
+
     # Database
     DATABASE_URL: str = default_database_url()
     
