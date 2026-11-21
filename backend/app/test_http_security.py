@@ -100,6 +100,24 @@ class HTTPInputSecurityTests(unittest.TestCase):
         )
         self.assertEqual(SecurityService().client_ip(request), "10.0.0.5")
 
+    def test_internal_api_origin_hostname_is_trusted_for_container_calls(self) -> None:
+        settings = Settings(_env_file=None, INTERNAL_API_ORIGIN="http://my-backend:9000")
+        hosts = settings.trusted_host_list
+        # The container service hostname is trusted so server-side calls stop failing host checks.
+        self.assertIn("my-backend", hosts)
+        self.assertIn("127.0.0.1", hosts)
+        # Fail-closed: a wildcard is never introduced, and manual hosts keep working.
+        self.assertNotIn("*", hosts)
+        manual = Settings(_env_file=None, INTERNAL_TRUSTED_HOSTS="api.internal, other-host")
+        self.assertIn("api.internal", manual.trusted_host_list)
+        self.assertIn("other-host", manual.trusted_host_list)
+
+    def test_internal_api_origin_unset_adds_no_hosts(self) -> None:
+        baseline = Settings(_env_file=None).trusted_host_list
+        self.assertNotIn("*", baseline)
+        # An empty internal origin must not widen the trusted set beyond the known defaults.
+        self.assertEqual(baseline, Settings(_env_file=None, INTERNAL_API_ORIGIN="").trusted_host_list)
+
     def test_security_bounds_and_algorithm_validation(self) -> None:
         with self.assertRaises(ValidationError):
             Settings(_env_file=None, MAX_REQUEST_SIZE_MB=0)

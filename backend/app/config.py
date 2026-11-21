@@ -59,6 +59,10 @@ class Settings(BaseSettings):
     ADMIN_BOOTSTRAP_EMAIL: str = "admin@company.com"
     ADMIN_BOOTSTRAP_PASSWORD: str | None = Field(default=None, repr=False)
     INTERNAL_TRUSTED_HOSTS: str = ""
+    # The origin the web/app layer uses to reach this backend from inside the deployment
+    # (e.g. a container service URL like http://my-backend:9000). Its hostname is trusted
+    # automatically so containerized server-side calls do not need manual INTERNAL_TRUSTED_HOSTS.
+    INTERNAL_API_ORIGIN: str | None = None
     ADMIN_DIR: str = "admin"
     SECRET_KEY: str = "karpy-dev-secret-change-me-in-production"
     
@@ -182,7 +186,16 @@ class Settings(BaseSettings):
     @property
     def trusted_host_list(self) -> list[str]:
         hosts = {"127.0.0.1", "localhost", "test", "testserver"}
-        for value in (self.APP_URL, self.PUBLIC_SITE_URL, self.USER_DASHBOARD_URL, self.ADMIN_DASHBOARD_URL, *self.user_dashboard_aliases):
+        # The backend's own origin plus the internal API origin used by containerized callers;
+        # the latter lets `http://<service>:<port>` reach the backend without manual config.
+        for value in (
+            self.APP_URL,
+            self.PUBLIC_SITE_URL,
+            self.USER_DASHBOARD_URL,
+            self.ADMIN_DASHBOARD_URL,
+            self.INTERNAL_API_ORIGIN,
+            *self.user_dashboard_aliases,
+        ):
             hostname = urlparse(value or "").hostname
             if hostname:
                 hosts.add(hostname)
