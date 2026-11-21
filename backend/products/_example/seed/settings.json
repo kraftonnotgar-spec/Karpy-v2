@@ -1,0 +1,11 @@
+{
+  "seed_version": 1,
+  "source": "Example Product: a minimal, neutral product used by the core product-layer tests and as a template for new products (see docs/REUSE.md).",
+  "settings": {
+    "locale.default": "en",
+    "locale.locales": ["en"],
+    "locale.currency": "USD",
+    "locale.country": "US",
+    "locale.timezone": "UTC"
+  }
+}

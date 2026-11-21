@@ -59,8 +59,23 @@ cd web && npm run typecheck && npm run lint && npm run build
 cd mobile && npx tsc --noEmit && npm run lint && npm test
 ```
 
-## 6. Deploy
+## 6. Seed the product data
 
-One deployment per brand: own database, media storage, secrets and domains. Run migrations, then create
-the first Super Admin (`ADMIN_BOOTSTRAP_USERNAME/EMAIL/PASSWORD`), then activate the plugins.
-`APP_ENV=production` turns on strict checks (HTTPS URLs, strong secrets, PostgreSQL, explicit CORS).
+The product's settings, roles and other baseline rows live in `backend/products/<PRODUCT>/` and load with the
+product-layer commands. Set `PRODUCT` (no default — the commands fail clearly until it is set):
+
+```bash
+export PRODUCT=acme
+cd backend && .venv/bin/python -m app.migrations up
+.venv/bin/python -m karpy_platform product:seed      # idempotent; demo:seed adds staging demo data
+```
+
+Copy `backend/products/_example/` as the starting template. Full details, the `product.json` schema and how to
+add seed loaders: [`REUSE.md`](REUSE.md).
+
+## 7. Deploy
+
+One deployment per brand: own database, media storage, secrets and domains. Run migrations, then the product
+seed (`product:seed`), then create the first Super Admin (`ADMIN_BOOTSTRAP_USERNAME/EMAIL/PASSWORD`), then
+activate the plugins. `APP_ENV=production` turns on strict checks (HTTPS URLs, strong secrets, PostgreSQL,
+explicit CORS) and refuses `demo:seed`.

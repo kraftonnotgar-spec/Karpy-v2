@@ -1,0 +1,17 @@
+{
+  "key": "_example",
+  "name": "Example Product",
+  "seed_version": 1,
+  "default_locale": "en",
+  "locales": ["en"],
+  "currency": "USD",
+  "country": "US",
+  "timezone": "UTC",
+  "enabled_plugins": ["auth"],
+  "seed": ["settings.json", "roles.json"],
+  "demo": {
+    "email_domain": "demo.example",
+    "phone_range": "+15550100000-+15550199999",
+    "files": ["demo.json"]
+  }
+}

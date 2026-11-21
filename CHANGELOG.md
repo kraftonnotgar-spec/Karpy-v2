@@ -19,6 +19,13 @@ Karpy merge tagged releases only (see `docs/NEW_PROJECT.md`).
   stdlib Go template, Python signing client, observability configs.
 - `tools/check_neutral.py`, `docker-compose.yml` (Postgres, Redis, RabbitMQ, optional observability profile),
   agent guides (`AGENTS.md`, `CLAUDE.md`) and docs.
+- Product layer (`backend/karpy_platform/core/products/`): seed/demo loader for `backend/products/<PRODUCT>/`.
+  The neutral core is told which product to load through the `PRODUCT` setting (no default; commands fail
+  clearly until set) and reads everything product-specific from that folder's JSON. Idempotent seed loaders
+  (core `settings` and `staff_roles`, extensible via `register_seed_loader`), opt-in demo data refused in
+  production with demo-domain/phone guards (core `users`, extensible via `register_demo_loader`), console
+  commands `product:seed` / `demo:seed` / `demo:clear`, and a minimal neutral example product
+  `backend/products/_example/`. Added `docs/REUSE.md`.
 
 ### Changed
 - Fresh migration chain: `v0001` baseline, `v0002` phone identities.

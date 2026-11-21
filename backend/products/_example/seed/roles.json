@@ -1,0 +1,11 @@
+{
+  "seed_version": 1,
+  "staff_roles": [
+    {
+      "slug": "support",
+      "name": "Support",
+      "description": "Read-only support staff: can view the admin dashboard.",
+      "permissions": ["dashboard.index"]
+    }
+  ]
+}

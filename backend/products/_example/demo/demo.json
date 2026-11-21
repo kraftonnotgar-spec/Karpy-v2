@@ -1,0 +1,8 @@
+{
+  "seed_version": 1,
+  "demo": true,
+  "users": [
+    {"key": "owner", "first_name": "Sample", "last_name": "Owner", "email": "owner@demo.example", "phone": "+15550100001", "verified": true},
+    {"key": "member", "first_name": "Sample", "last_name": "Member", "email": "member@demo.example", "phone": null, "verified": true}
+  ]
+}
